@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+export NAME="diamondbacksolutionsllc.com"
+export KOPS_STATE_STORE="s3://kops-state-bk5678"
+export CLOUD="aws"
+export AWS_REGION="us-east-1a"
+alias ksimple="kops create cluster $NAME --zones $AWS_REGION --state $KOPS_STATE_STORE -v 10"
+alias kprivate="kops create cluster i $NAME --zones $AWS_REGION state $KOPS_STATE_STORE --v 10 --topology private --bastion --networking weave $NAME --yes"
+alias kdc="kops delete cluster $NAME state $KOPS_STATE_STORE --yes ${NAME} -v 10"
+alias kec="kops edit cluster $NAME state $KOPS_STATE_STORE "
+alias kuc="kops update cluster $NAME state $KOPS_STATE_STORE --yes -v 10"
+alias kruc="kops rolling-update cluster $NAME state $KOPS_STATE_STORE --yes -v 10"
